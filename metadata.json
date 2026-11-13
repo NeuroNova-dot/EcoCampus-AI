@@ -1,0 +1,6 @@
+{
+  "name": "EcoCampus AI",
+  "description": "Making Every Campus Greener Through Artificial Intelligence — AI waste vision, environmental issue reporting, and campus sustainability analytics.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
