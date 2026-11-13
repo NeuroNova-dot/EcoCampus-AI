@@ -16,7 +16,8 @@ export type ReportCategory =
   | 'Water Leak'
   | 'Energy Waste'
   | 'Litter / Illegal Dumping'
-  | 'Broken Station';
+  | 'Broken Station'
+  | 'Other';
 
 export interface EcoReport {
   id: string;

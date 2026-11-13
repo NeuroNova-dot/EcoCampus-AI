@@ -26,12 +26,17 @@ const CATEGORIES: ReportCategory[] = [
   'Energy Waste',
   'Litter / Illegal Dumping',
   'Broken Station',
+  'Other',
 ];
+
+const ECO_REPORT_LOCATIONS = [...CAMPUS_LOCATIONS, 'Other'];
 
 export function EcoReportPage({ reports, onSubmitReport }: EcoReportPageProps) {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState<ReportCategory>('Overflowing Bin');
-  const [location, setLocation] = useState<string>(CAMPUS_LOCATIONS[0]);
+  const [customCategory, setCustomCategory] = useState('');
+  const [location, setLocation] = useState<string>(ECO_REPORT_LOCATIONS[0]);
+  const [customLocation, setCustomLocation] = useState('');
   const [priority, setPriority] = useState<'Low' | 'Medium' | 'High'>('Medium');
   const [description, setDescription] = useState('');
   const [photoUrl, setPhotoUrl] = useState<string | undefined>(undefined);
@@ -71,13 +76,16 @@ export function EcoReportPage({ reports, onSubmitReport }: EcoReportPageProps) {
         if (match?.[1]) mimeType = match[1];
       }
 
+      const resolvedLocation =
+        location === 'Other' && customLocation.trim() ? customLocation.trim() : location;
+
       const response = await fetch('/api/ecoreport-analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           imageBase64: dataUrl,
           mimeType,
-          location,
+          location: resolvedLocation,
         }),
       });
 
@@ -125,13 +133,19 @@ export function EcoReportPage({ reports, onSubmitReport }: EcoReportPageProps) {
       return;
     }
 
+    const finalLocation =
+      location === 'Other' && customLocation.trim() ? customLocation.trim() : location;
+
+    const categoryLabel =
+      category === 'Other' && customCategory.trim() ? customCategory.trim() : category;
+
     const derivedTitle =
-      title.trim() || `${category} reported at ${location}`;
+      title.trim() || `${categoryLabel} reported at ${finalLocation}`;
 
     onSubmitReport({
       title: derivedTitle,
       category,
-      location,
+      location: finalLocation,
       description: description.trim(),
       priority,
       photoUrl,
@@ -139,9 +153,11 @@ export function EcoReportPage({ reports, onSubmitReport }: EcoReportPageProps) {
     });
 
     setTitle('');
+    setCustomCategory('');
+    setCustomLocation('');
     setDescription('');
     setPhotoUrl(undefined);
-    setSubmittedNotice(`Report submitted for ${location}. +30 GreenScore points credited.`);
+    setSubmittedNotice(`Report submitted for ${finalLocation}. +30 GreenScore points credited.`);
     setTimeout(() => setSubmittedNotice(null), 5000);
   };
 
@@ -196,6 +212,22 @@ export function EcoReportPage({ reports, onSubmitReport }: EcoReportPageProps) {
             </select>
           </div>
 
+          {category === 'Other' && (
+            <div>
+              <label htmlFor="er-custom-category" className="block text-xs font-semibold text-slate-700 mb-1.5">
+                Specify Issue Category (optional)
+              </label>
+              <input
+                id="er-custom-category"
+                type="text"
+                value={customCategory}
+                onChange={(e) => setCustomCategory(e.target.value)}
+                placeholder="e.g., Chemical odor, fallen branch, drainage block"
+                className="w-full px-3 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669]"
+              />
+            </div>
+          )}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label htmlFor="er-location" className="block text-xs font-semibold text-slate-700 mb-1.5">
@@ -207,7 +239,7 @@ export function EcoReportPage({ reports, onSubmitReport }: EcoReportPageProps) {
                 onChange={(e) => setLocation(e.target.value)}
                 className="w-full px-3 py-2.5 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669]"
               >
-                {CAMPUS_LOCATIONS.map((loc) => (
+                {ECO_REPORT_LOCATIONS.map((loc) => (
                   <option key={loc} value={loc}>
                     {loc}
                   </option>
@@ -231,6 +263,22 @@ export function EcoReportPage({ reports, onSubmitReport }: EcoReportPageProps) {
               </select>
             </div>
           </div>
+
+          {location === 'Other' && (
+            <div>
+              <label htmlFor="er-custom-location" className="block text-xs font-semibold text-slate-700 mb-1.5">
+                Specify Campus Location (optional)
+              </label>
+              <input
+                id="er-custom-location"
+                type="text"
+                value={customLocation}
+                onChange={(e) => setCustomLocation(e.target.value)}
+                placeholder="e.g., BSSRV Hostel Block, Main Gate, Sports Ground"
+                className="w-full px-3 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669]"
+              />
+            </div>
+          )}
 
           <div>
             <label htmlFor="er-title" className="block text-xs font-semibold text-slate-700 mb-1.5">
