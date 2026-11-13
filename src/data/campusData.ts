@@ -15,7 +15,7 @@ export const CAMPUS_IMAGES = {
   sampleCafeteriaCups: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.43.06_PM_5faee51e.jpeg',
   wasteRecyclables: '/src/assets/images/waste_sample_recyclables_1794556180539.jpg',
   wasteCompost: '/src/assets/images/waste_sample_compost_1794556181070.jpg',
-  issueOverflowBin: '/src/assets/images/ecoreport_overflow_bin_1794556182341.jpg',
+  issueOverflowBin: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_9.05.43_PM_6b684725.jpeg',
 };
 
 export const CAMPUS_LOCATIONS = [
