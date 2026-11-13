@@ -4,6 +4,7 @@
   --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-university: "Cormorant Garamond", Georgia, serif;
 
   --color-emerald-primary: #059669;
   --color-emerald-deep: #064E3B;
@@ -20,6 +21,10 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+  }
+
+  .font-university {
+    font-family: var(--font-university);
   }
 
   .tabular-nums {

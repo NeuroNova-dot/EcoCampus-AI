@@ -13,6 +13,7 @@ import {
   Instagram,
 } from 'lucide-react';
 import { AppPage } from '../types/eco';
+import { CAMPUS_IMAGES } from '../data/campusData';
 
 interface AboutPageProps {
   onNavigate: (page: AppPage) => void;
@@ -36,7 +37,7 @@ const CREATORS: CreatorProfile[] = [
     initials: 'GD',
     photoUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_7.05.04_PM_4ee53a7d.jpeg',
     department: 'Applied Science (Physics)',
-    institution: 'BSSRV',
+    institution: 'Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)',
     team: 'Neuro Nova',
     email: 'dasgautam36928@gmail.com',
     instagram: 'luzifer._.666',
@@ -47,7 +48,7 @@ const CREATORS: CreatorProfile[] = [
     initials: 'AH',
     photoUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_7.09.57_PM_5b3bf28b.jpeg',
     department: 'Applied Science (Chemistry)',
-    institution: 'BSSRV',
+    institution: 'Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)',
     team: 'Neuro Nova',
     email: 'akashnilhazarika00@gmail.com',
     instagram: 'akashnil._',
@@ -79,7 +80,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8">
             <p className="text-xs font-semibold text-emerald-200 mb-2">
-              Team Neuro Nova · Applied Science Department (BSSRV)
+              Team Neuro Nova · Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)
             </p>
             <h2
               className="font-display text-2xl sm:text-4xl font-bold tracking-tight leading-tight mb-3"
@@ -89,9 +90,10 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             </h2>
             <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed max-w-2xl">
               EcoCampus AI was designed and built by <strong className="text-white">Team Neuro Nova</strong>{' '}
-              from the Applied Science Department at BSSRV with one goal: making every campus greener
-              through practical artificial intelligence, faster waste identification, and transparent
-              environmental reporting.
+              from the Applied Science Department at{' '}
+              <strong className="text-white">Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)</strong>{' '}
+              with one goal: making our university campus greener through practical artificial
+              intelligence, faster waste identification, and transparent environmental reporting.
             </p>
           </div>
 
@@ -107,11 +109,31 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               <div className="w-8 h-8 rounded-lg bg-white/10 text-emerald-300 flex items-center justify-center mb-2.5">
                 <GraduationCap className="w-4 h-4" />
               </div>
-              <p className="text-xs text-emerald-200 mb-0.5">Department</p>
-              <p className="font-display font-bold text-base text-white">Applied Science</p>
-              <p className="text-[11px] text-emerald-200/90">BSSRV</p>
+              <p className="text-xs text-emerald-200 mb-0.5">University</p>
+              <p className="font-display font-bold text-base text-white">BSSRV</p>
+              <p className="text-[11px] text-emerald-200/90">Applied Science</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* University Campus Showcase */}
+      <section className="bg-white border border-slate-200/90 rounded-2xl overflow-hidden">
+        <div className="aspect-[16/9] sm:aspect-[21/9] w-full bg-slate-100 overflow-hidden">
+          <img
+            src={CAMPUS_IMAGES.bssrvCampus}
+            alt="Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV) campus building"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+        <div className="px-6 py-5 sm:px-8 sm:py-6 border-t border-slate-200/80 text-center bg-white">
+          <h3 className="font-university text-2xl sm:text-4xl font-bold text-[#064E3B] tracking-tight">
+            Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1.5">
+            Official Campus & Academic Building · EcoCampus AI Built by Team Neuro Nova
+          </p>
         </div>
       </section>
 
@@ -122,7 +144,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             Team Neuro Nova Members
           </h3>
           <p className="text-xs text-slate-500">
-            Applied Science Department (BSSRV) · Direct contact & project contributions
+            Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV) · Applied Science Department
           </p>
         </div>
 

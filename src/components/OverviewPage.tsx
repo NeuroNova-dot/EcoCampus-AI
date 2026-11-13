@@ -42,7 +42,7 @@ export function OverviewPage({
       <section className="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div>
           <p className="text-xs font-semibold text-[#059669] mb-1.5">
-            Fall Semester · North Quad Residence Hall
+            Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV) · Fall Semester
           </p>
           <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#064E3B] tracking-tight mb-2">
             Welcome back, Liam

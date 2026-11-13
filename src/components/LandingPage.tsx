@@ -141,30 +141,28 @@ export function LandingPage({
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <Building2 className="w-4 h-4 text-[#059669]" />
-                  32 Monitored Campus Zones
+                  Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)
                 </span>
               </div>
             </div>
 
             <div className="lg:col-span-6 flex">
-              <div className="relative w-full rounded-2xl overflow-hidden border border-slate-200 bg-[#ECFDF5] shadow-[0_8px_30px_rgba(6,78,59,0.08)] min-h-[320px] lg:min-h-[440px]">
-                <img
-                  src={CAMPUS_IMAGES.heroCampus}
-                  alt="Sustainable modern university campus courtyard with solar panels and green pathways"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#064E3B]/90 via-[#064E3B]/55 to-transparent p-6 pt-16 text-white">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-medium text-emerald-200 mb-1">
-                        North Campus Sustainability Hub · Live Telemetry
-                      </p>
-                      <p className="font-display font-semibold text-base sm:text-lg leading-snug">
-                        Unified waste intelligence for students, grounds crews, and facilities leads.
-                      </p>
-                    </div>
-                  </div>
+              <div className="w-full rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-[0_8px_30px_rgba(6,78,59,0.08)] flex flex-col">
+                <div className="relative flex-1 min-h-[280px] lg:min-h-[360px] bg-[#ECFDF5] overflow-hidden">
+                  <img
+                    src={CAMPUS_IMAGES.bssrvCampus}
+                    alt="Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV) university building and campus"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="px-6 py-4 bg-white border-t border-slate-200/90">
+                  <p className="font-university text-xl sm:text-2xl font-bold text-[#064E3B] tracking-tight leading-snug">
+                    Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)
+                  </p>
+                  <p className="text-xs text-slate-500 mt-1">
+                    Campus Sustainability Initiative · Built by Team Neuro Nova
+                  </p>
                 </div>
               </div>
             </div>
@@ -451,7 +449,7 @@ export function LandingPage({
             <div>
               <p className="font-display font-bold text-sm text-[#064E3B]">EcoCampus AI</p>
               <p className="text-xs text-slate-500">
-                Making Every Campus Greener Through Artificial Intelligence
+                Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV) · Team Neuro Nova
               </p>
             </div>
           </div>
