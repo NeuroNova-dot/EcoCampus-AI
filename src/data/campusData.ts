@@ -9,6 +9,7 @@ import {
 export const CAMPUS_IMAGES = {
   heroCampus: '/src/assets/images/hero_sustainable_campus_1794556180955.jpg',
   bssrvCampus: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_7.38.30_PM_81f6450a.jpeg',
+  wasteVisionBanner: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.08.17_PM_584f106e.jpeg',
   wasteRecyclables: '/src/assets/images/waste_sample_recyclables_1794556180539.jpg',
   wasteCompost: '/src/assets/images/waste_sample_compost_1794556181070.jpg',
   issueOverflowBin: '/src/assets/images/ecoreport_overflow_bin_1794556182341.jpg',

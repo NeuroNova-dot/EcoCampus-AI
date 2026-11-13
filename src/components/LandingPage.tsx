@@ -244,10 +244,10 @@ export function LandingPage({
                     </button>
                   </div>
                   <div className="sm:col-span-5">
-                    <div className="rounded-xl overflow-hidden border border-slate-200 aspect-[4/3] bg-slate-50">
+                    <div className="rounded-xl overflow-hidden border border-slate-200 aspect-[3/2] bg-slate-950">
                       <img
-                        src={CAMPUS_IMAGES.wasteRecyclables}
-                        alt="Sample campus cafeteria waste analyzed by WasteVision AI"
+                        src={CAMPUS_IMAGES.wasteVisionBanner}
+                        alt="WasteVision AI — See, Sort, Make a Greener Tomorrow detecting Plastic, Paper, and Metal"
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover"
                       />

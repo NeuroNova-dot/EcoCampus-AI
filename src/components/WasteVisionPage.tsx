@@ -218,6 +218,50 @@ export function WasteVisionPage({
 
   return (
     <div className="space-y-6">
+      {/* WasteVision AI Visual Showcase Banner */}
+      <div className="bg-white border border-slate-200/90 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-6 bg-slate-950">
+            <div className="aspect-[3/2] w-full overflow-hidden">
+              <img
+                src={CAMPUS_IMAGES.wasteVisionBanner}
+                alt="WasteVision AI — See, Sort, Make a Greener Tomorrow detecting Plastic, Paper, and Metal"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 p-6 sm:p-8 space-y-4">
+            <p className="text-xs font-semibold text-[#059669] tracking-tight">
+              WasteVision AI · Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)
+            </p>
+            <h2 className="font-display font-bold text-xl sm:text-2xl text-[#064E3B] tracking-tight leading-snug">
+              See · Sort · Make a Greener Tomorrow
+            </h2>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Point a campus camera or upload a photo of mixed waste streams—plastic bottles, paper
+              packaging, metal cans, organics, or lab items. Gemini Vision isolates each material,
+              flags contamination uncertainty, and routes items to the right BSSRV bin.
+            </p>
+            <div className="pt-2 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-xs">
+              <div>
+                <p className="font-semibold text-[#064E3B]">01. Capture</p>
+                <p className="text-slate-500 mt-0.5">Live camera or drag-and-drop</p>
+              </div>
+              <div>
+                <p className="font-semibold text-[#064E3B]">02. Detect</p>
+                <p className="text-slate-500 mt-0.5">Plastic, paper, metal & organics</p>
+              </div>
+              <div>
+                <p className="font-semibold text-[#064E3B]">03. Route</p>
+                <p className="text-slate-500 mt-0.5">Instant bin & GreenScore points</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: Upload & Camera Interface */}
         <div className="lg:col-span-5 space-y-5">
