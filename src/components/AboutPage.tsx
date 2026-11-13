@@ -10,6 +10,7 @@ import {
   FileWarning,
   BarChart3,
   MessageSquareText,
+  Instagram,
 } from 'lucide-react';
 import { AppPage } from '../types/eco';
 
@@ -25,6 +26,7 @@ interface CreatorProfile {
   institution: string;
   team: string;
   email: string;
+  instagram: string;
   focus: string;
 }
 
@@ -33,20 +35,22 @@ const CREATORS: CreatorProfile[] = [
     name: 'Gautam Das',
     initials: 'GD',
     photoUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_7.05.04_PM_4ee53a7d.jpeg',
-    department: 'Applied Science Department',
+    department: 'Applied Science (Physics)',
     institution: 'BSSRV',
     team: 'Neuro Nova',
     email: 'dasgautam36928@gmail.com',
+    instagram: 'luzifer._.666',
     focus: 'Environmental Monitoring Architecture, Waste Classification & Campus Systems',
   },
   {
     name: 'Akashnil Hazarika',
     initials: 'AH',
     photoUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_7.09.57_PM_5b3bf28b.jpeg',
-    department: 'Applied Science Department',
+    department: 'Applied Science (Chemistry)',
     institution: 'BSSRV',
     team: 'Neuro Nova',
     email: 'akashnilhazarika00@gmail.com',
+    instagram: 'akashnil._',
     focus: 'AI Integration, Full-Stack Interface Engineering & Sustainability Analytics',
   },
 ];
@@ -168,32 +172,46 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <a
-                    href={`mailto:${creator.email}`}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-[#064E3B] hover:text-[#059669] transition-colors min-w-0"
-                  >
-                    <Mail className="w-4 h-4 text-[#059669] shrink-0" />
-                    <span className="truncate">{creator.email}</span>
-                  </a>
+                <div className="pt-4 border-t border-slate-200/80 space-y-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <a
+                      href={`mailto:${creator.email}`}
+                      className="inline-flex items-center gap-2 text-sm font-medium text-[#064E3B] hover:text-[#059669] transition-colors min-w-0"
+                    >
+                      <Mail className="w-4 h-4 text-[#059669] shrink-0" />
+                      <span className="truncate">{creator.email}</span>
+                    </a>
 
-                  <button
-                    type="button"
-                    onClick={() => handleCopyEmail(creator.email)}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#064E3B] bg-[#ECFDF5] hover:bg-emerald-100 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-                  >
-                    {isCopied ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-[#059669]" />
-                        <span>Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5 text-[#059669]" />
-                        <span>Copy Email</span>
-                      </>
-                    )}
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => handleCopyEmail(creator.email)}
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#064E3B] bg-[#ECFDF5] hover:bg-emerald-100 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                    >
+                      {isCopied ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-[#059669]" />
+                          <span>Copied</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3.5 h-3.5 text-[#059669]" />
+                          <span>Copy Email</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <a
+                      href={`https://www.instagram.com/${creator.instagram}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-[#059669] transition-colors"
+                    >
+                      <Instagram className="w-4 h-4 text-[#059669] shrink-0" />
+                      <span>@{creator.instagram}</span>
+                    </a>
+                  </div>
                 </div>
               </article>
             );
