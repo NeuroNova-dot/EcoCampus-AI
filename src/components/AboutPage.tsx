@@ -20,6 +20,7 @@ interface AboutPageProps {
 interface CreatorProfile {
   name: string;
   initials: string;
+  photoUrl: string;
   department: string;
   institution: string;
   team: string;
@@ -31,6 +32,7 @@ const CREATORS: CreatorProfile[] = [
   {
     name: 'Gautam Das',
     initials: 'GD',
+    photoUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_7.05.04_PM_4ee53a7d.jpeg',
     department: 'Applied Science Department',
     institution: 'BSSRV',
     team: 'Neuro Nova',
@@ -40,6 +42,7 @@ const CREATORS: CreatorProfile[] = [
   {
     name: 'Akashnil Hazarika',
     initials: 'AH',
+    photoUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_7.09.57_PM_5b3bf28b.jpeg',
     department: 'Applied Science Department',
     institution: 'BSSRV',
     team: 'Neuro Nova',
@@ -50,6 +53,7 @@ const CREATORS: CreatorProfile[] = [
 
 export function AboutPage({ onNavigate }: AboutPageProps) {
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
+  const [failedPhotos, setFailedPhotos] = useState<Record<string, boolean>>({});
 
   const handleCopyEmail = async (email: string) => {
     try {
@@ -127,10 +131,24 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                 className="bg-white border border-slate-200/90 rounded-2xl p-6 flex flex-col justify-between gap-6"
               >
                 <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-[#ECFDF5] border border-emerald-200/80 text-[#064E3B] font-display font-bold text-lg flex items-center justify-center shrink-0">
-                      {creator.initials}
-                    </div>
+                  <div className="flex items-center gap-4">
+                    {failedPhotos[creator.email] ? (
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#ECFDF5] border border-emerald-200/80 text-[#064E3B] font-display font-bold text-xl flex items-center justify-center shrink-0">
+                        {creator.initials}
+                      </div>
+                    ) : (
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shrink-0">
+                        <img
+                          src={creator.photoUrl}
+                          alt={`${creator.name} — Team ${creator.team}`}
+                          referrerPolicy="no-referrer"
+                          onError={() =>
+                            setFailedPhotos((prev) => ({ ...prev, [creator.email]: true }))
+                          }
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                    )}
                     <div className="min-w-0">
                       <h4 className="font-display text-xl font-bold text-[#1F2937] leading-snug">
                         {creator.name}
