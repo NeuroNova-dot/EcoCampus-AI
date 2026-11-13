@@ -478,9 +478,55 @@ export function WasteVisionPage({
               Test with Campus Sample Photos
             </p>
             <p className="text-xs text-slate-500 mb-3">
-              Load a real campus cafeteria tray to run live Gemini Vision detection.
+              Load a campus cafeteria or dining sample to run live Gemini Vision detection.
             </p>
             <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() =>
+                  loadSampleImage(
+                    CAMPUS_IMAGES.sampleCafeteriaCups,
+                    'BSSRV Cafeteria counter cups: clear plastic cold cup with dome lid and black straw, kraft paper hot cup with black lid'
+                  )
+                }
+                className="text-left group rounded-xl border border-slate-200 hover:border-[#059669] overflow-hidden transition-colors cursor-pointer"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-slate-100">
+                  <img
+                    src={CAMPUS_IMAGES.sampleCafeteriaCups}
+                    alt="Cafeteria plastic cold cup and paper hot coffee cup sample"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-200"
+                  />
+                </div>
+                <p className="p-2.5 text-xs font-medium text-[#1F2937]">
+                  Cafeteria Beverage Cups
+                </p>
+              </button>
+
+              <button
+                type="button"
+                onClick={() =>
+                  loadSampleImage(
+                    CAMPUS_IMAGES.sampleDiningCompostables,
+                    'BSSRV Dining Hall 100% compostable molded fiber plate, bowl, cup, wooden cutlery, and paper napkin'
+                  )
+                }
+                className="text-left group rounded-xl border border-slate-200 hover:border-[#059669] overflow-hidden transition-colors cursor-pointer"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-slate-100">
+                  <img
+                    src={CAMPUS_IMAGES.sampleDiningCompostables}
+                    alt="Dining hall 100% compostable plate, bowl, cup, and wooden cutlery sample"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-200"
+                  />
+                </div>
+                <p className="p-2.5 text-xs font-medium text-[#1F2937]">
+                  Dining Compostable Set
+                </p>
+              </button>
+
               <button
                 type="button"
                 onClick={() =>
