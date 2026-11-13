@@ -7,6 +7,8 @@ import {
   Image as ImageIcon,
   Trash2,
   Send,
+  Sparkles,
+  RefreshCw,
 } from 'lucide-react';
 import { EcoReport, ReportCategory, ReportStatus } from '../types/eco';
 import { CAMPUS_IMAGES, CAMPUS_LOCATIONS } from '../data/campusData';
@@ -36,10 +38,68 @@ export function EcoReportPage({ reports, onSubmitReport }: EcoReportPageProps) {
 
   const [formError, setFormError] = useState<string | null>(null);
   const [submittedNotice, setSubmittedNotice] = useState<string | null>(null);
+  const [isAiTriaging, setIsAiTriaging] = useState(false);
 
   const [statusFilter, setStatusFilter] = useState<'All' | ReportStatus>('All');
   const [searchQuery, setSearchQuery] = useState('');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const analyzeIssuePhotoWithAi = async () => {
+    if (!photoUrl || isAiTriaging) return;
+    setIsAiTriaging(true);
+    setFormError(null);
+
+    try {
+      let dataUrl = photoUrl;
+      let mimeType = 'image/jpeg';
+
+      if (!photoUrl.startsWith('data:')) {
+        const imgRes = await fetch(photoUrl);
+        const blob = await imgRes.blob();
+        mimeType = blob.type || 'image/jpeg';
+        dataUrl = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () =>
+            typeof reader.result === 'string'
+              ? resolve(reader.result)
+              : reject(new Error('Could not read image'));
+          reader.onerror = () => reject(new Error('Could not read image'));
+          reader.readAsDataURL(blob);
+        });
+      } else {
+        const match = photoUrl.match(/^data:([^;]+);/);
+        if (match?.[1]) mimeType = match[1];
+      }
+
+      const response = await fetch('/api/ecoreport-analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          imageBase64: dataUrl,
+          mimeType,
+          location,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'AI photo triage failed.');
+      }
+
+      if (CATEGORIES.includes(data.category)) {
+        setCategory(data.category as ReportCategory);
+      }
+      if (['Low', 'Medium', 'High'].includes(data.priority)) {
+        setPriority(data.priority as 'Low' | 'Medium' | 'High');
+      }
+      if (data.title) setTitle(data.title);
+      if (data.description) setDescription(data.description);
+    } catch (err) {
+      setFormError(err instanceof Error ? err.message : 'Unable to analyze issue photo.');
+    } finally {
+      setIsAiTriaging(false);
+    }
+  };
 
   const handlePhotoUpload = (file: File) => {
     if (!file.type.startsWith('image/')) {
@@ -216,20 +276,41 @@ export function EcoReportPage({ reports, onSubmitReport }: EcoReportPageProps) {
             </div>
 
             {photoUrl ? (
-              <div className="relative rounded-xl overflow-hidden border border-slate-200 aspect-[16/10] bg-slate-50">
-                <img
-                  src={photoUrl}
-                  alt="Attached environmental issue"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
+              <div className="space-y-2.5">
+                <div className="relative rounded-xl overflow-hidden border border-slate-200 aspect-[16/10] bg-slate-50">
+                  <img
+                    src={photoUrl}
+                    alt="Attached environmental issue"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setPhotoUrl(undefined)}
+                    aria-label="Remove attached photo"
+                    className="absolute top-2.5 right-2.5 p-1.5 bg-white/95 text-slate-700 hover:text-red-600 rounded-lg border border-slate-200 cursor-pointer"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+
                 <button
                   type="button"
-                  onClick={() => setPhotoUrl(undefined)}
-                  aria-label="Remove attached photo"
-                  className="absolute top-2.5 right-2.5 p-1.5 bg-white/95 text-slate-700 hover:text-red-600 rounded-lg border border-slate-200 cursor-pointer"
+                  disabled={isAiTriaging}
+                  onClick={analyzeIssuePhotoWithAi}
+                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2 text-xs font-semibold text-[#064E3B] bg-[#ECFDF5] hover:bg-emerald-100 border border-emerald-200/80 rounded-xl transition-colors cursor-pointer disabled:opacity-60"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  {isAiTriaging ? (
+                    <>
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                      <span>Analysing Photo with AI...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-3.5 h-3.5 text-[#059669]" />
+                      <span>Auto-Fill Issue Details from Photo with AI</span>
+                    </>
+                  )}
                 </button>
               </div>
             ) : (

@@ -13,9 +13,9 @@ import {
   Home,
   Plus,
   Info,
+  User,
 } from 'lucide-react';
 import { AppPage } from '../types/eco';
-import { CAMPUS_IMAGES } from '../data/campusData';
 import { EcoLogoMark } from './EcoLogo';
 
 interface SidebarShellProps {
@@ -175,15 +175,12 @@ export function SidebarShell({
             collapsed && !isMobile ? 'justify-center' : ''
           }`}
         >
-          <img
-            src={CAMPUS_IMAGES.studentAvatar}
-            alt="Liam Mercer"
-            referrerPolicy="no-referrer"
-            className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0"
-          />
+          <div className="w-9 h-9 rounded-full bg-[#ECFDF5] border border-emerald-200 text-[#064E3B] flex items-center justify-center shrink-0">
+            <User className="w-4 h-4" />
+          </div>
           {(!collapsed || isMobile) && (
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-[#1F2937] truncate">Liam Mercer</p>
+              <p className="text-sm font-semibold text-[#1F2937] truncate">BSSRV Member</p>
               <p className="text-xs text-slate-500 truncate tabular-nums">
                 GreenScore: <span className="font-semibold text-[#059669]">{greenScore.toLocaleString()}</span> pts
               </p>

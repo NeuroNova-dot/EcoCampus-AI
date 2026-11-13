@@ -60,7 +60,7 @@ export function GreenScorePage({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold text-emerald-200 mb-1.5">
-              Personal Sustainability Standing · North Quad Residence
+              Personal Sustainability Standing · Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)
             </p>
             <div className="flex items-baseline gap-3 mb-3">
               <span className="font-display text-4xl sm:text-5xl font-bold tracking-tight tabular-nums">

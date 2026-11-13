@@ -45,7 +45,7 @@ export function OverviewPage({
             Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV) · Fall Semester
           </p>
           <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#064E3B] tracking-tight mb-2">
-            Welcome back, Liam
+            Campus Sustainability Overview
           </h2>
           <p className="text-sm sm:text-base text-slate-600 max-w-2xl">
             Your campus actions helped divert an estimated 112 kg of recyclables and compostables

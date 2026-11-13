@@ -8,6 +8,9 @@ import {
   X,
   TrendingUp,
   MapPin,
+  Sparkles,
+  RefreshCw,
+  AlertCircle,
 } from 'lucide-react';
 import { EcoReport, ReportStatus } from '../types/eco';
 import { WEEKLY_TREND_DATA } from '../data/campusData';
@@ -37,6 +40,44 @@ export function GreenDashboardPage({
   const [searchQuery, setSearchQuery] = useState('');
   const [hoveredWeek, setHoveredWeek] = useState<number | null>(null);
   const [selectedReport, setSelectedReport] = useState<EcoReport | null>(null);
+  const [aiBrief, setAiBrief] = useState<{
+    executiveSummary: string;
+    topPriorityAction: string;
+    hotspotInsight: string;
+  } | null>(null);
+  const [isGeneratingBrief, setIsGeneratingBrief] = useState(false);
+  const [briefError, setBriefError] = useState<string | null>(null);
+
+  const generateAiBrief = async () => {
+    if (isGeneratingBrief) return;
+    setIsGeneratingBrief(true);
+    setBriefError(null);
+    try {
+      const response = await fetch('/api/green-brief', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reports: reports.map((r) => ({
+            id: r.id,
+            category: r.category,
+            location: r.location,
+            status: r.status,
+            priority: r.priority,
+            title: r.title,
+          })),
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Unable to generate AI facilities brief.');
+      }
+      setAiBrief(data);
+    } catch (err) {
+      setBriefError(err instanceof Error ? err.message : 'Failed to generate AI brief.');
+    } finally {
+      setIsGeneratingBrief(false);
+    }
+  };
 
   const totalCount = reports.length;
   const pendingCount = reports.filter((r) => r.status === 'Pending').length;
@@ -114,6 +155,74 @@ export function GreenDashboardPage({
 
   return (
     <div className="space-y-6">
+      {/* AI Operations Brief Card */}
+      <section className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#ECFDF5] text-[#059669] flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="font-display font-bold text-base text-[#064E3B]">
+                AI Campus Operations Brief
+              </h2>
+              <p className="text-xs text-slate-500">
+                Live Gemini analysis of open BSSRV reports, crew dispatch priorities & campus hotspots
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            disabled={isGeneratingBrief}
+            onClick={generateAiBrief}
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-[#059669] hover:bg-[#064E3B] disabled:bg-slate-300 rounded-xl transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+          >
+            {isGeneratingBrief ? (
+              <>
+                <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                <span>Generating Brief...</span>
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>{aiBrief ? 'Refresh AI Brief' : 'Generate AI Brief'}</span>
+              </>
+            )}
+          </button>
+        </div>
+
+        {briefError && (
+          <div className="mt-4 flex items-start gap-2 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700">
+            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+            <span>{briefError}</span>
+          </div>
+        )}
+
+        {aiBrief && (
+          <div className="mt-5 pt-5 border-t border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div>
+              <p className="text-xs font-semibold text-[#059669] mb-1">Executive Summary</p>
+              <p className="text-xs sm:text-sm text-[#1F2937] leading-relaxed">
+                {aiBrief.executiveSummary}
+              </p>
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-[#059669] mb-1">Top Priority Dispatch</p>
+              <p className="text-xs sm:text-sm text-[#1F2937] leading-relaxed">
+                {aiBrief.topPriorityAction}
+              </p>
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-[#059669] mb-1">Campus Hotspot Insight</p>
+              <p className="text-xs sm:text-sm text-[#1F2937] leading-relaxed">
+                {aiBrief.hotspotInsight}
+              </p>
+            </div>
+          </div>
+        )}
+      </section>
+
       {/* Top KPI Row */}
       <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5">

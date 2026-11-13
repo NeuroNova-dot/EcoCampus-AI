@@ -65,7 +65,7 @@ export default function App() {
       ...newReport,
       id,
       status: 'Pending',
-      submittedBy: 'Liam Mercer',
+      submittedBy: 'BSSRV Campus Member',
       submittedAt: 'Just now',
     };
     setReports((prev) => [report, ...prev]);

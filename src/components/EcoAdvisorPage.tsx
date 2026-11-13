@@ -6,9 +6,9 @@ import {
   AlertCircle,
   Leaf,
   ArrowUpRight,
+  User,
 } from 'lucide-react';
 import { ChatMessage } from '../types/eco';
-import { CAMPUS_IMAGES } from '../data/campusData';
 
 interface EcoAdvisorPageProps {
   greenScore: number;
@@ -17,19 +17,19 @@ interface EcoAdvisorPageProps {
 }
 
 const SUGGESTED_QUESTIONS = [
-  'Are coated paper coffee cups from the Student Union recyclable or landfill?',
-  'How should students dispose of old lithium batteries or broken USB chargers on campus?',
-  'What are the top 3 ways to reduce electricity waste in campus residence halls?',
+  'Are coated paper coffee cups from the campus canteen recyclable or landfill?',
+  'How should BSSRV students dispose of spent lithium batteries or broken lab electronics?',
+  'What are the top 3 ways to reduce electricity waste across academic buildings?',
   'Why does food residue ruin an entire batch of blue-bin paper recycling?',
-  'What counts as compostable in North Dining Commons green bins?',
-  'How can our student club organize a zero-waste campus event?',
+  'What items belong in green organic compost bins on campus?',
+  'How can our department organize a zero-waste seminar or campus event?',
 ];
 
 const INITIAL_MESSAGES: ChatMessage[] = [
   {
     id: 'msg-welcome',
     role: 'model',
-    text: 'Hello Liam! I am **EcoAdvisor**, your campus sustainability assistant. Ask me anything about recycling contamination, composting guidelines, e-waste drop-offs, or reducing water and energy footprint around campus.',
+    text: 'Hello! I am **EcoAdvisor**, your sustainability assistant for **Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)**. Ask me anything about recycling contamination, composting guidelines, e-waste drop-offs, or reducing water and energy footprint across campus.',
     timestamp: 'Just now',
   },
 ];
@@ -112,7 +112,7 @@ export function EcoAdvisorPage({
         .map((m) => ({ role: m.role, text: m.text }));
 
       const studentSummary = includeContext
-        ? `Student Liam Mercer (North Quad Residence Hall), GreenScore: ${greenScore} pts, EcoReports submitted: ${totalReports}, WasteVision scans logged: ${totalScans}.`
+        ? `BSSRV Campus Member (Birangana Sati Sadhani Rajyik Vishwavidyalaya), GreenScore: ${greenScore} pts, EcoReports submitted: ${totalReports}, WasteVision scans logged: ${totalScans}.`
         : undefined;
 
       const response = await fetch('/api/ecoadvisor', {
@@ -248,12 +248,9 @@ export function EcoAdvisorPage({
               }`}
             >
               {msg.role === 'user' ? (
-                <img
-                  src={CAMPUS_IMAGES.studentAvatar}
-                  alt="Liam Mercer"
-                  referrerPolicy="no-referrer"
-                  className="w-8 h-8 rounded-full object-cover border border-slate-200 shrink-0"
-                />
+                <div className="w-8 h-8 rounded-full bg-[#064E3B] text-white flex items-center justify-center shrink-0">
+                  <User className="w-4 h-4" />
+                </div>
               ) : (
                 <div className="w-8 h-8 rounded-xl bg-[#ECFDF5] text-[#059669] border border-emerald-200/70 flex items-center justify-center shrink-0">
                   <Leaf className="w-4 h-4" />

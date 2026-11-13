@@ -442,7 +442,7 @@ export function WasteVisionPage({
                 onClick={() =>
                   loadSampleImage(
                     CAMPUS_IMAGES.wasteRecyclables,
-                    'Student Union cafe table items: PET bottle, aluminum can, coffee cup, napkin'
+                    'BSSRV Student Commons table items: PET bottle, aluminum can, coffee cup, napkin'
                   )
                 }
                 className="text-left group rounded-xl border border-slate-200 hover:border-[#059669] overflow-hidden transition-colors cursor-pointer"
