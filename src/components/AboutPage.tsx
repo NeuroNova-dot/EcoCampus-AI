@@ -78,7 +78,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
       {/* Team Hero Card */}
       <section className="bg-[#064E3B] text-white rounded-2xl p-6 sm:p-8 lg:p-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-7">
             <p className="text-xs font-semibold text-emerald-200 mb-2">
               Team Neuro Nova · Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)
             </p>
@@ -97,21 +97,32 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             </p>
           </div>
 
-          <div className="lg:col-span-4 grid grid-cols-2 gap-3">
-            <div className="bg-white/10 rounded-xl p-4">
-              <div className="w-8 h-8 rounded-lg bg-white/10 text-emerald-300 flex items-center justify-center mb-2.5">
-                <Users className="w-4 h-4" />
-              </div>
-              <p className="text-xs text-emerald-200 mb-0.5">Team Name</p>
-              <p className="font-display font-bold text-base text-white">Neuro Nova</p>
+          <div className="lg:col-span-5 flex flex-col sm:flex-row items-center lg:justify-end gap-4">
+            <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden bg-black border border-white/20 shadow-[0_8px_24px_rgba(0,0,0,0.3)] shrink-0">
+              <img
+                src={CAMPUS_IMAGES.neuroNovaLogo}
+                alt="Team Neuro Nova official logo"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-contain"
+              />
             </div>
-            <div className="bg-white/10 rounded-xl p-4">
-              <div className="w-8 h-8 rounded-lg bg-white/10 text-emerald-300 flex items-center justify-center mb-2.5">
-                <GraduationCap className="w-4 h-4" />
+
+            <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 w-full sm:w-44">
+              <div className="bg-white/10 rounded-xl p-3.5">
+                <div className="flex items-center gap-2 mb-1">
+                  <Users className="w-4 h-4 text-emerald-300" />
+                  <p className="text-xs text-emerald-200">Team Name</p>
+                </div>
+                <p className="font-display font-bold text-base text-white">Neuro Nova</p>
               </div>
-              <p className="text-xs text-emerald-200 mb-0.5">University</p>
-              <p className="font-display font-bold text-base text-white">BSSRV</p>
-              <p className="text-[11px] text-emerald-200/90">Applied Science</p>
+              <div className="bg-white/10 rounded-xl p-3.5">
+                <div className="flex items-center gap-2 mb-1">
+                  <GraduationCap className="w-4 h-4 text-emerald-300" />
+                  <p className="text-xs text-emerald-200">University</p>
+                </div>
+                <p className="font-display font-bold text-base text-white">BSSRV</p>
+                <p className="text-[11px] text-emerald-200/90">Applied Science</p>
+              </div>
             </div>
           </div>
         </div>

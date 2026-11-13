@@ -10,6 +10,7 @@ import {
 export const CAMPUS_IMAGES = {
   heroCampus: '/src/assets/images/hero_sustainable_campus_1794556180955.jpg',
   bssrvCampus: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_7.38.30_PM_81f6450a.jpeg',
+  neuroNovaLogo: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_9.22.17_PM_777970f8.jpeg',
   wasteVisionBanner: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.08.17_PM_584f106e.jpeg',
   sampleDiningCompostables:
     '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.43.06_PM__1__407534e9.jpeg',

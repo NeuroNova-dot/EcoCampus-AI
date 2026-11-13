@@ -8,6 +8,7 @@ import {
   MessageSquareText,
   CheckCircle2,
   Building2,
+  Users,
 } from 'lucide-react';
 import { AppPage } from '../types/eco';
 import { CAMPUS_IMAGES } from '../data/campusData';
@@ -138,6 +139,15 @@ export function LandingPage({
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#064E3B] bg-white hover:bg-[#ECFDF5] border border-slate-200 hover:border-[#059669]/40 rounded-xl transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#059669] focus-visible:ring-offset-2"
                 >
                   <span>Explore Dashboard</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onNavigate('about')}
+                  className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-[#064E3B] bg-[#ECFDF5]/60 hover:bg-[#ECFDF5] border border-emerald-200/80 hover:border-[#059669]/50 rounded-xl transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#059669] focus-visible:ring-offset-2"
+                >
+                  <Users className="w-4 h-4 text-[#059669]" />
+                  <span>About the Creators</span>
                 </button>
               </div>
 

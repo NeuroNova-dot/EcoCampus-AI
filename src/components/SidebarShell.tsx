@@ -39,7 +39,7 @@ const NAV_ITEMS: Array<{
   { id: 'greenscore', label: 'GreenScore', icon: Award },
   { id: 'ecoadvisor', label: 'EcoAdvisor', icon: MessageSquareText },
   { id: 'feedback', label: 'Feedback', icon: MessageSquarePlus },
-  { id: 'about', label: 'About', icon: Info },
+  { id: 'about', label: 'About the Creators', icon: Info },
 ];
 
 const PAGE_TITLES: Record<Exclude<AppPage, 'landing'>, string> = {
@@ -50,7 +50,7 @@ const PAGE_TITLES: Record<Exclude<AppPage, 'landing'>, string> = {
   greenscore: 'GreenScore',
   ecoadvisor: 'EcoAdvisor',
   feedback: 'Campus Feedback',
-  about: 'About & Creators',
+  about: 'About the Creators',
 };
 
 export function SidebarShell({
