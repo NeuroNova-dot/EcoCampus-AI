@@ -2,6 +2,7 @@ import {
   AchievementBadge,
   ContributionEntry,
   EcoReport,
+  FeedbackEntry,
   LeaderboardEntry,
   WasteScanRecord,
 } from '../types/eco';
@@ -359,4 +360,47 @@ export const WEEKLY_TREND_DATA = [
   { week: 'W6', reports: 28, resolved: 24, diversion: 66 },
   { week: 'W7', reports: 25, resolved: 23, diversion: 67 },
   { week: 'W8', reports: 31, resolved: 27, diversion: 69 },
+];
+
+export const INITIAL_FEEDBACK: FeedbackEntry[] = [
+  {
+    id: 'FB-104',
+    authorRole: 'Applied Science (Physics) Student',
+    module: 'WasteVision AI',
+    rating: 5,
+    comment:
+      'Instant sorting clarity for cafeteria cups and food containers makes it obvious which bin to use without holding up the line.',
+    timestamp: '3 hours ago',
+    helpfulCount: 14,
+  },
+  {
+    id: 'FB-103',
+    authorRole: 'Applied Science (Chemistry) Student',
+    module: 'EcoReport',
+    rating: 5,
+    comment:
+      'Being able to attach a quick photo of overflowing library bins and auto-fill the report details saves a lot of time.',
+    timestamp: 'Yesterday',
+    helpfulCount: 11,
+  },
+  {
+    id: 'FB-102',
+    authorRole: 'BSSRV Student',
+    module: 'EcoAdvisor',
+    rating: 4,
+    comment:
+      'Really practical guidance on e-waste battery drop-offs and rinsing PET bottles before recycling. Would love seasonal campus drive reminders.',
+    timestamp: '2 days ago',
+    helpfulCount: 8,
+  },
+  {
+    id: 'FB-101',
+    authorRole: 'BSSRV Campus Operations',
+    module: 'Green Dashboard',
+    rating: 5,
+    comment:
+      'The location breakdown and AI operations brief highlight building hotspots immediately so grounds crews can prioritize overflowing stations.',
+    timestamp: '4 days ago',
+    helpfulCount: 16,
+  },
 ];

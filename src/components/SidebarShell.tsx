@@ -13,6 +13,7 @@ import {
   Home,
   Plus,
   Info,
+  MessageSquarePlus,
   User,
 } from 'lucide-react';
 import { AppPage } from '../types/eco';
@@ -37,6 +38,7 @@ const NAV_ITEMS: Array<{
   { id: 'green-dashboard', label: 'Green Dashboard', icon: BarChart3 },
   { id: 'greenscore', label: 'GreenScore', icon: Award },
   { id: 'ecoadvisor', label: 'EcoAdvisor', icon: MessageSquareText },
+  { id: 'feedback', label: 'Feedback', icon: MessageSquarePlus },
   { id: 'about', label: 'About', icon: Info },
 ];
 
@@ -47,6 +49,7 @@ const PAGE_TITLES: Record<Exclude<AppPage, 'landing'>, string> = {
   'green-dashboard': 'Green Dashboard',
   greenscore: 'GreenScore',
   ecoadvisor: 'EcoAdvisor',
+  feedback: 'Campus Feedback',
   about: 'About & Creators',
 };
 

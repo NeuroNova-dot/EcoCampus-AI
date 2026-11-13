@@ -6,7 +6,8 @@ export type AppPage =
   | 'green-dashboard'
   | 'greenscore'
   | 'ecoadvisor'
-  | 'about';
+  | 'about'
+  | 'feedback';
 
 export type ReportStatus = 'Pending' | 'Under Review' | 'Resolved';
 
@@ -101,4 +102,23 @@ export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
   timestamp: string;
+}
+
+export type FeedbackModule =
+  | 'General Experience'
+  | 'WasteVision AI'
+  | 'EcoReport'
+  | 'Green Dashboard'
+  | 'GreenScore'
+  | 'EcoAdvisor'
+  | 'Other';
+
+export interface FeedbackEntry {
+  id: string;
+  authorRole: string;
+  module: FeedbackModule;
+  rating: number;
+  comment: string;
+  timestamp: string;
+  helpfulCount: number;
 }

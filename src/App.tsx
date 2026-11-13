@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import {
   INITIAL_ACHIEVEMENTS,
   INITIAL_CONTRIBUTIONS,
+  INITIAL_FEEDBACK,
   INITIAL_LEADERBOARD,
   INITIAL_REPORTS,
   INITIAL_SCANS,
@@ -11,6 +12,8 @@ import {
   AppPage,
   ContributionEntry,
   EcoReport,
+  FeedbackEntry,
+  FeedbackModule,
   LeaderboardEntry,
   ReportStatus,
   WasteScanRecord,
@@ -23,6 +26,7 @@ import { EcoReportPage } from './components/EcoReportPage';
 import { GreenDashboardPage } from './components/GreenDashboardPage';
 import { GreenScorePage } from './components/GreenScorePage';
 import { EcoAdvisorPage } from './components/EcoAdvisorPage';
+import { FeedbackPage } from './components/FeedbackPage';
 import { AboutPage } from './components/AboutPage';
 
 export default function App() {
@@ -33,6 +37,8 @@ export default function App() {
     useState<ContributionEntry[]>(INITIAL_CONTRIBUTIONS);
   const [greenScore, setGreenScore] = useState<number>(1420);
   const [totalContributions, setTotalContributions] = useState<number>(48);
+  const [feedbackList, setFeedbackList] = useState<FeedbackEntry[]>(INITIAL_FEEDBACK);
+  const [helpfulFeedbackIds, setHelpfulFeedbackIds] = useState<Record<string, boolean>>({});
 
   const handleNavigate = (page: AppPage) => {
     setActivePage(page);
@@ -93,6 +99,52 @@ export default function App() {
   const handleAssignCrew = (id: string, assignedCrew: string) => {
     setReports((prev) =>
       prev.map((r) => (r.id === id ? { ...r, assignedCrew } : r))
+    );
+  };
+
+  const handleSubmitFeedback = (entry: {
+    authorRole: string;
+    module: FeedbackModule;
+    rating: number;
+    comment: string;
+  }) => {
+    const newEntry: FeedbackEntry = {
+      id: `FB-${105 + feedbackList.length}`,
+      authorRole: entry.authorRole,
+      module: entry.module,
+      rating: entry.rating,
+      comment: entry.comment,
+      timestamp: 'Just now',
+      helpfulCount: 1,
+    };
+    setFeedbackList((prev) => [newEntry, ...prev]);
+    setGreenScore((prev) => prev + 15);
+    setTotalContributions((prev) => prev + 1);
+    setContributions((prev) => [
+      {
+        id: `CTR-${Math.floor(402 + Math.random() * 500)}`,
+        type: 'Zero-Waste Challenge',
+        title: `Shared ${entry.rating}/5 feedback on ${entry.module}`,
+        location: 'Birangana Sati Sadhani Rajyik Vishwavidyalaya (BSSRV)',
+        timestamp: 'Just now',
+        points: 15,
+      },
+      ...prev,
+    ]);
+  };
+
+  const handleToggleFeedbackHelpful = (id: string) => {
+    const alreadyHelpful = Boolean(helpfulFeedbackIds[id]);
+    setHelpfulFeedbackIds((prev) => ({ ...prev, [id]: !alreadyHelpful }));
+    setFeedbackList((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              helpfulCount: Math.max(0, item.helpfulCount + (alreadyHelpful ? -1 : 1)),
+            }
+          : item
+      )
     );
   };
 
@@ -186,6 +238,15 @@ export default function App() {
           greenScore={greenScore}
           totalReports={reports.length}
           totalScans={scans.length}
+        />
+      )}
+
+      {activePage === 'feedback' && (
+        <FeedbackPage
+          feedbackList={feedbackList}
+          onSubmitFeedback={handleSubmitFeedback}
+          onToggleHelpful={handleToggleFeedbackHelpful}
+          helpfulIds={helpfulFeedbackIds}
         />
       )}
 

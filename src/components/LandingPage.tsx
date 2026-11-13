@@ -71,6 +71,13 @@ export function LandingPage({
             </button>
             <button
               type="button"
+              onClick={() => onNavigate('feedback')}
+              className="hover:text-[#064E3B] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            >
+              Feedback
+            </button>
+            <button
+              type="button"
               onClick={() => onNavigate('about')}
               className="hover:text-[#064E3B] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
@@ -496,6 +503,13 @@ export function LandingPage({
               className="hover:text-[#059669] cursor-pointer"
             >
               EcoAdvisor
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('feedback')}
+              className="hover:text-[#059669] cursor-pointer"
+            >
+              Feedback
             </button>
             <button
               type="button"
