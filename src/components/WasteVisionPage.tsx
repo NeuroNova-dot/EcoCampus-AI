@@ -526,52 +526,6 @@ export function WasteVisionPage({
                   Dining Compostable Set
                 </p>
               </button>
-
-              <button
-                type="button"
-                onClick={() =>
-                  loadSampleImage(
-                    CAMPUS_IMAGES.wasteRecyclables,
-                    'BSSRV Student Commons table items: PET bottle, aluminum can, coffee cup, napkin'
-                  )
-                }
-                className="text-left group rounded-xl border border-slate-200 hover:border-[#059669] overflow-hidden transition-colors cursor-pointer"
-              >
-                <div className="aspect-[4/3] overflow-hidden bg-slate-100">
-                  <img
-                    src={CAMPUS_IMAGES.wasteRecyclables}
-                    alt="Cafeteria plastics and coffee cup sample"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-200"
-                  />
-                </div>
-                <p className="p-2.5 text-xs font-medium text-[#1F2937]">
-                  Cafeteria Mixed Tray
-                </p>
-              </button>
-
-              <button
-                type="button"
-                onClick={() =>
-                  loadSampleImage(
-                    CAMPUS_IMAGES.wasteCompost,
-                    'Dining hall tray with paper takeout box, salad leftovers, fruit scraps, wooden cutlery'
-                  )
-                }
-                className="text-left group rounded-xl border border-slate-200 hover:border-[#059669] overflow-hidden transition-colors cursor-pointer"
-              >
-                <div className="aspect-[4/3] overflow-hidden bg-slate-100">
-                  <img
-                    src={CAMPUS_IMAGES.wasteCompost}
-                    alt="Dining hall compostables sample"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-200"
-                  />
-                </div>
-                <p className="p-2.5 text-xs font-medium text-[#1F2937]">
-                  Dining Organics Tray
-                </p>
-              </button>
             </div>
           </div>
         </div>
