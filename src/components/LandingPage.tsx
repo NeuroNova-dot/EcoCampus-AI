@@ -69,6 +69,13 @@ export function LandingPage({
             >
               WasteVision AI
             </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('about')}
+              className="hover:text-[#064E3B] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            >
+              About
+            </button>
           </nav>
 
           <div className="flex items-center shrink-0">
@@ -491,6 +498,13 @@ export function LandingPage({
               className="hover:text-[#059669] cursor-pointer"
             >
               EcoAdvisor
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('about')}
+              className="hover:text-[#059669] cursor-pointer"
+            >
+              About
             </button>
           </div>
         </div>

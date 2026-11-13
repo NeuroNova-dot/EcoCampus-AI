@@ -5,7 +5,8 @@ export type AppPage =
   | 'ecoreport'
   | 'green-dashboard'
   | 'greenscore'
-  | 'ecoadvisor';
+  | 'ecoadvisor'
+  | 'about';
 
 export type ReportStatus = 'Pending' | 'Under Review' | 'Resolved';
 

@@ -12,6 +12,7 @@ import {
   X,
   Home,
   Plus,
+  Info,
 } from 'lucide-react';
 import { AppPage } from '../types/eco';
 import { CAMPUS_IMAGES } from '../data/campusData';
@@ -36,6 +37,7 @@ const NAV_ITEMS: Array<{
   { id: 'green-dashboard', label: 'Green Dashboard', icon: BarChart3 },
   { id: 'greenscore', label: 'GreenScore', icon: Award },
   { id: 'ecoadvisor', label: 'EcoAdvisor', icon: MessageSquareText },
+  { id: 'about', label: 'About', icon: Info },
 ];
 
 const PAGE_TITLES: Record<Exclude<AppPage, 'landing'>, string> = {
@@ -45,6 +47,7 @@ const PAGE_TITLES: Record<Exclude<AppPage, 'landing'>, string> = {
   'green-dashboard': 'Green Dashboard',
   greenscore: 'GreenScore',
   ecoadvisor: 'EcoAdvisor',
+  about: 'About & Creators',
 };
 
 export function SidebarShell({

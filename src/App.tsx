@@ -23,6 +23,7 @@ import { EcoReportPage } from './components/EcoReportPage';
 import { GreenDashboardPage } from './components/GreenDashboardPage';
 import { GreenScorePage } from './components/GreenScorePage';
 import { EcoAdvisorPage } from './components/EcoAdvisorPage';
+import { AboutPage } from './components/AboutPage';
 
 export default function App() {
   const [activePage, setActivePage] = useState<AppPage>('landing');
@@ -186,6 +187,10 @@ export default function App() {
           totalReports={reports.length}
           totalScans={scans.length}
         />
+      )}
+
+      {activePage === 'about' && (
+        <AboutPage onNavigate={handleNavigate} />
       )}
     </SidebarShell>
   );
