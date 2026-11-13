@@ -112,7 +112,7 @@ export function EcoAdvisorPage({
         .map((m) => ({ role: m.role, text: m.text }));
 
       const studentSummary = includeContext
-        ? `BSSRV Campus Member (Birangana Sati Sadhani Rajyik Vishwavidyalaya), GreenScore: ${greenScore} pts, EcoReports submitted: ${totalReports}, WasteVision scans logged: ${totalScans}.`
+        ? `BSSRV Student (Birangana Sati Sadhani Rajyik Vishwavidyalaya), GreenScore: ${greenScore} pts, EcoReports submitted: ${totalReports}, WasteVision scans logged: ${totalScans}.`
         : undefined;
 
       const response = await fetch('/api/ecoadvisor', {

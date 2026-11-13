@@ -47,7 +47,7 @@ export const INITIAL_REPORTS: EcoReport[] = [
     description:
       'Unrinsed food containers and beverage cups were placed in the dry paper & plastics bin near the main entrance.',
     status: 'Under Review',
-    submittedBy: 'BSSRV Campus Member',
+    submittedBy: 'BSSRV Student',
     submittedAt: '2 hours ago',
     priority: 'Medium',
     assignedCrew: 'Zero-Waste Crew B',
@@ -73,7 +73,7 @@ export const INITIAL_REPORTS: EcoReport[] = [
     description:
       'Classroom lights and ceiling fans remained powered after evening academic sessions ended.',
     status: 'Resolved',
-    submittedBy: 'BSSRV Campus Member',
+    submittedBy: 'BSSRV Student',
     submittedAt: 'Yesterday',
     priority: 'Medium',
     assignedCrew: 'Building Automation',
@@ -324,7 +324,7 @@ export const INITIAL_LEADERBOARD: LeaderboardEntry[] = [
   },
   {
     rank: 4,
-    name: 'BSSRV Campus Member (You)',
+    name: 'BSSRV Student (You)',
     hall: 'Applied Science Dept.',
     contributions: 48,
     score: 1420,

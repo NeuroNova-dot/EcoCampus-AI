@@ -180,7 +180,7 @@ export function SidebarShell({
           </div>
           {(!collapsed || isMobile) && (
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-[#1F2937] truncate">BSSRV Member</p>
+              <p className="text-sm font-semibold text-[#1F2937] truncate">BSSRV Student</p>
               <p className="text-xs text-slate-500 truncate tabular-nums">
                 GreenScore: <span className="font-semibold text-[#059669]">{greenScore.toLocaleString()}</span> pts
               </p>
